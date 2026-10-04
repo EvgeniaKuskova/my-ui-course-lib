@@ -1,0 +1,85 @@
+.button {
+  min-width: 140px;
+  padding: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid #17171B;
+  color: white;
+  cursor: pointer;
+}
+
+.button--S {
+  height: 36px;
+  font-size: 14px;
+}
+
+.button--M {
+  height: 44px;
+  font-size: 15px;
+}
+
+.button--L {
+  height: 52px;
+  font-size: 16px;
+}
+
+.button--fill {
+  background: #17171B;
+}
+
+.button--fill:where(:not(:disabled):hover) {
+  background-color: #2D2D33;
+  border-color: #2D2D33;
+}
+
+.button--fill:where(:not(:disabled):active) {
+  background: #050506;
+  border-color: #050506;
+}
+
+.button--fill:where(:disabled) {
+  opacity: 0.4;
+  color: #FFFFFF;
+}
+
+.button--outline {
+  background: #fff;
+  color: #08060d;
+}
+
+.button--outline:where(:not(:disabled):hover){
+  background: #f4f4f5;
+}
+
+.button--outline:where(:not(:disabled):active) {
+  background: #e4e4e7;
+}
+
+.button--outline:where(:disabled) {
+  background: #fff;
+  opacity: 0.4;
+}
+
+.button--text {
+  background: transparent;
+  color: #17171B;
+  border-color: transparent;
+}
+
+.button--text:where(:not(:disabled):hover) {
+  background: #f4f4f5;
+}
+
+.button--text:where(:not(:disabled):active) {
+  background: #E7E7EA;
+}
+
+.button--text:where(:disabled) {
+  opacity: 0.4;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
