@@ -6,6 +6,26 @@
   padding: 32px;
 }
 
+.spec-title {
+  margin: 0 0 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #17171b;
+}
+
+.spec-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.spec-note {
+  margin: 16px 0 32px;
+  font-size: 13px;
+  color: #71717a;
+}
+
 .spec-table {
   border-collapse: collapse;
   font-size: 14px;
