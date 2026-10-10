@@ -1,7 +1,7 @@
-import type { ButtonProps } from './ButtonProps'
+import type { ButtonProps } from './ButtonProps.ts'
 import './Button.css'
 
-export type { ButtonSize, ButtonVariant } from './ButtonProps'
+export type { ButtonSize, ButtonVariant } from './ButtonProps.ts'
 
 function Button({
   variant = 'fill',

@@ -1,8 +1,8 @@
-import Button from './components/Button'
+import Button from './components/button/Button.tsx'
 import type {
   ButtonSize,
   ButtonVariant,
-} from './components/ButtonProps'
+} from './components/button/ButtonProps.ts'
 import './App.css'
 
 const VARIANTS: ButtonVariant[] = ['fill', 'outline', 'text']
@@ -16,7 +16,7 @@ function App() {
           <tr>
             <th scope="col">variant</th>
             <th scope="col">size</th>
-            <th scope="col">default</th>
+            <th scope="col">default/hover/active</th>
             <th scope="col">disabled</th>
           </tr>
         </thead>

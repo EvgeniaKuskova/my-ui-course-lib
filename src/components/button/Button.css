@@ -1,0 +1,86 @@
+.button {
+  min-width: var(--btn-min-width);
+  padding: var(--btn-padding);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: var(--btn-border-width) var(--btn-border-line-style) var(--button-border-color);
+  color: var(--btn-color);
+  cursor: pointer;
+}
+
+.button--S {
+  height: var(--btn-S-height);
+  font-size: var(--btn-S-font-size);
+}
+
+.button--M {
+  height: var(--btn-M-height);
+  font-size: var(--btn-M-font-size);
+}
+
+.button--L {
+  height: var(--btn-L-height);
+  font-size: var(--btn-L-font-size);
+}
+
+.button--fill {
+  background: var(--button-fill-bg);
+  color: var(--button-fill-text);
+}
+
+.button--fill:where(:not(:disabled):hover) {
+  background-color: var(--button-fill-bg-hover);
+  border-color: var(--button-fill-bg-hover);
+}
+
+.button--fill:where(:not(:disabled):active) {
+  background: var(--button-fill-bg-active);
+  border-color: var(--button-fill-bg-active);
+}
+
+.button--fill:where(:disabled) {
+  opacity: 0.4;
+  color: var(--button-fill-text);
+}
+
+.button--outline {
+  background: var(--button-outline-bg);
+  color: var(--button-outline-text);
+}
+
+.button--outline:where(:not(:disabled):hover){
+  background: var(--button-outline-bg-hover);
+}
+
+.button--outline:where(:not(:disabled):active) {
+  background: var(--button-outline-bg-active);
+}
+
+.button--outline:where(:disabled) {
+  background: var(--button-outline-bg);
+  opacity: 0.4;
+}
+
+.button--text {
+  background: transparent;
+  color: var(--button-text-color);
+  border-color: transparent;
+}
+
+.button--text:where(:not(:disabled):hover) {
+  background: var(--button-text-bg-hover);
+}
+
+.button--text:where(:not(:disabled):active) {
+  background: var(--button-text-bg-active);
+}
+
+.button--text:where(:disabled) {
+  opacity: 0.4;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}

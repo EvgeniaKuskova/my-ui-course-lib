@@ -1,0 +1,32 @@
+﻿:root {
+    --button-border-color: #17171b;
+
+    --button-fill-bg: #17171b;
+    --button-fill-bg-hover: #2d2d33;
+    --button-fill-bg-active: #050506;
+    --button-fill-text: #ffffff;
+
+    --button-outline-bg: #ffffff;
+    --button-outline-bg-hover: #f4f4f5;
+    --button-outline-bg-active: #e4e4e7;
+    --button-outline-text: #08060d;
+
+    --button-text-color: #17171b;
+    --button-text-bg-hover: #f4f4f5;
+    --button-text-bg-active: #e7e7ea;
+
+    --btn-min-width: 140px;
+    --btn-padding: 16px;
+    --btn-border-width: 1px;
+    --btn-border-line-style: solid;
+    --btn-color: white;
+
+    --btn-S-height: 36px;
+    --btn-S-font-size: 14px;
+
+    --btn-M-height: 44px;
+    --btn-M-font-size: 15px;
+
+    --btn-L-height: 52px;
+    --btn-L-font-size: 16px;
+}
