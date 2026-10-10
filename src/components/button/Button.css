@@ -1,4 +1,7 @@
 .button {
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: var(--font-family), serif;
   min-width: var(--btn-min-width);
   padding: var(--btn-padding);
   display: inline-flex;

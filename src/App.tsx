@@ -46,6 +46,14 @@ function App() {
           )}
         </tbody>
       </table>
+        <Button
+            as={'a'}
+            href={'https://staff.skbkontur.ru/profile/kuskova.e'}
+            size={'S'}
+            variant={'outline'}
+        >
+            Ссылка
+        </Button>
     </section>
   )
 }

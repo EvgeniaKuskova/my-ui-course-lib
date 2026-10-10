@@ -1,4 +1,5 @@
 ﻿:root {
+    --font-family: Inter, system-ui, sans-serif;
     --button-border-color: #17171b;
 
     --button-fill-bg: #17171b;

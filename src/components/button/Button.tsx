@@ -1,17 +1,19 @@
 import type { ButtonProps } from './ButtonProps.ts'
 import './Button.css'
+import * as React from "react";
 
 export type { ButtonSize, ButtonVariant } from './ButtonProps.ts'
 
-function Button({
-  variant = 'fill',
-  size = 'M',
-  className,
-  disabled,
-  type = 'button',
-  children,
-  ...rest
-}: ButtonProps) {
+function Button(props: ButtonProps) {
+  const {
+    variant = 'fill',
+    size = 'M',
+    className,
+    children,
+    as = 'button',
+    ...rest
+  } = props
+
   const classes = [
     'button',
     `button--${variant}`,
@@ -21,15 +23,15 @@ function Button({
     .filter(Boolean)
     .join(' ')
 
+  const Tag = as as React.ElementType;
+
   return (
-    <button
-      type={type}
+    <Tag
       className={classes}
-      disabled={disabled}
       {...rest}
     >
       {children}
-    </button>
+    </Tag>
   )
 }
 
