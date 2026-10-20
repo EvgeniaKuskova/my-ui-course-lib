@@ -1,16 +1,16 @@
 ﻿import { style, styleVariants } from '@vanilla-extract/css';
-import {vars} from "../../styles/theme.css.ts";
+import { vars } from '../../styles/theme.css.ts';
 
 export const base = style({
     boxSizing: 'border-box',
     textDecoration: 'none',
-    fontFamily: vars.font.family,
-    minWidth: vars.button.minWidth,
+    fontFamily: vars.fontFamily,
+    minWidth: vars.buttonMinWidth,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: vars.button.borderRadius,
-    border: `${vars.button.borderWidth} ${vars.button.borderStyle} ${vars.button.borderColor}`,
+    borderRadius: vars.buttonBorderRadius,
+    border: `${vars.buttonBorderWidth} ${vars.buttonBorderStyle} ${vars.buttonBorderColor}`,
     cursor: 'pointer',
 
     selectors: {
@@ -23,65 +23,65 @@ export const base = style({
 
 export const size = styleVariants({
     S: {
-        height: vars.button.size.S.height,
-        fontSize: vars.button.size.S.fontSize,
-        padding: vars.button.size.S.padding,
+        height: vars.buttonSmallHeight,
+        fontSize: vars.buttonSmallFontSize,
+        padding: `${vars.buttonSmallPaddingY} ${vars.buttonSmallPaddingX}`,
     },
     M: {
-        height: vars.button.size.M.height,
-        fontSize: vars.button.size.M.fontSize,
-        padding: vars.button.size.M.padding,
+        height: vars.buttonMediumHeight,
+        fontSize: vars.buttonMediumFontSize,
+        padding: `${vars.buttonMediumPaddingY} ${vars.buttonMediumPaddingX}`,
     },
     L: {
-        height: vars.button.size.L.height,
-        fontSize: vars.button.size.L.fontSize,
-        padding: vars.button.size.L.padding,
+        height: vars.buttonLargeHeight,
+        fontSize: vars.buttonLargeFontSize,
+        padding: `${vars.buttonLargePaddingY} ${vars.buttonLargePaddingX}`,
     }
 });
 
 export const variant = styleVariants({
     fill: {
-        backgroundColor: vars.button.fill.bg,
-        color: vars.button.fill.text,
+        backgroundColor: vars.buttonFillBg,
+        color: vars.buttonFillText,
         selectors: {
             '&:not(:disabled):hover': {
-                backgroundColor: vars.button.fill.bgHover,
-                borderColor: vars.button.fill.bgHover,
+                backgroundColor: vars.buttonFillBgHover,
+                borderColor: vars.buttonFillBgHover,
             },
             '&:not(:disabled):active': {
-                backgroundColor: vars.button.fill.bgActive,
-                borderColor: vars.button.fill.bgActive,
+                backgroundColor: vars.buttonFillBgActive,
+                borderColor: vars.buttonFillBgActive,
             },
             '&:disabled': {
-                color: vars.button.fill.text,
+                color: vars.buttonFillText,
             }
         }
     },
     outline: {
-        backgroundColor: vars.button.outline.bg,
-        color: vars.button.outline.text,
+        backgroundColor: vars.buttonOutlineBg,
+        color: vars.buttonOutlineText,
         selectors: {
             '&:not(:disabled):hover': {
-                backgroundColor: vars.button.outline.bgHover,
+                backgroundColor: vars.buttonOutlineBgHover,
             },
             '&:not(:disabled):active': {
-                backgroundColor: vars.button.outline.bgActive,
+                backgroundColor: vars.buttonOutlineBgActive,
             },
             '&:disabled': {
-                backgroundColor: vars.button.outline.bg,
+                backgroundColor: vars.buttonOutlineBg,
             }
         }
     },
     text: {
         backgroundColor: 'transparent',
-        color: vars.button.textVariant.color,
+        color: vars.buttonTextVariantColor,
         borderColor: 'transparent',
         selectors: {
             '&:not(:disabled):hover': {
-                backgroundColor: vars.button.textVariant.bgHover,
+                backgroundColor: vars.buttonTextVariantBgHover,
             },
             '&:not(:disabled):active': {
-                backgroundColor: vars.button.textVariant.bgActive,
+                backgroundColor: vars.buttonTextVariantBgActive,
             }
         }
     }
