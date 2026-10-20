@@ -1,7 +1,5 @@
 # my-ui-course-lib
 
-Учебная UI-библиотека на [vanilla-extract](https://vanilla-extract.style/).
-
 ## Кастомизация через токены
 
 Тема описана плоским объектом `themeTokens` в `src/styles/theme.css.ts`.
@@ -18,7 +16,7 @@ export default function App() {
       <Button>Обычная кнопка без кастомизаций</Button>
 
       <ThemeProvider tokens={{ buttonSmallPaddingX: '24px' }}>
-        <Button size="S">Подтюненная кнопка</Button>
+        <Button size="S">Кастомизация</Button>
       </ThemeProvider>
     </>
   )
