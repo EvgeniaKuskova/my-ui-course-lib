@@ -6,15 +6,11 @@ import type {
 import './App.css'
 import { ThemeProvider } from './components/theme_context/ThemeContext.tsx'
 
-// 1. Импортируем провайдер темы, который мы создали ранее
-
 const VARIANTS: ButtonVariant[] = ['fill', 'outline', 'text']
 const SIZES: ButtonSize[] = ['S', 'M', 'L']
 
 function App() {
   return (
-      // 2. Оборачиваем всё содержимое в ThemeProvider
-      // Именно этот div внутри провайдера добавит класс темы и активирует все CSS-переменные
       <ThemeProvider>
         <section className="spec">
           <table className="spec-table">
