@@ -1,13 +1,16 @@
 ﻿import { useMemo, type CSSProperties, type ReactNode } from "react";
 import { vars } from "../../styles/theme.css.ts";
 import type { ThemeToken } from "../../styles/theme.css.ts";
+import { ThemeContext } from "./themeContext.ts";
+import type { Theme } from "./themeContext.ts";
 
 export type ThemeProviderProps = {
+    theme?: Theme;
     tokens?: Partial<Record<ThemeToken, string>>;
     children?: ReactNode;
 };
 
-export const ThemeProvider = ({ tokens, children }: ThemeProviderProps) => {
+export const ThemeProvider = ({ theme, tokens, children }: ThemeProviderProps) => {
     const overrides = useMemo<CSSProperties | undefined>(() => {
         if (!tokens) {
             return undefined;
@@ -26,11 +29,15 @@ export const ThemeProvider = ({ tokens, children }: ThemeProviderProps) => {
         return style as CSSProperties;
     }, [tokens]);
 
-    if (!overrides) {
-        return <>{children}</>;
+    const content = overrides ? <div style={overrides}>{children}</div> : children;
+
+    if (theme === undefined) {
+        return <>{content}</>;
     }
 
-    return <div style={overrides}>{children}</div>;
+    return (
+        <ThemeContext.Provider value={theme}>
+            <div data-theme={theme}>{content}</div>
+        </ThemeContext.Provider>
+    );
 };
-
-export { ThemeProvider as ThemeContext };
