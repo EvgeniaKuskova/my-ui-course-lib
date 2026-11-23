@@ -3,7 +3,7 @@
 export const themeTokens = {
     fontFamily: 'Inter, system-ui, sans-serif',
 
-    // ——— Button (из прошлых домашек) ———
+
     buttonBorderColor: '#17171b',
     buttonBorderWidth: '1px',
     buttonBorderStyle: 'solid',
@@ -41,7 +41,7 @@ export const themeTokens = {
 
     buttonIconGap: '8px',
 
-    // ——— Calendar ———
+
     calendarBg: '#FFFFFF',
     calendarBorderColor: '#E4E4E7',
     calendarBorderWidth: '1px',
@@ -90,8 +90,8 @@ export type ThemeToken = keyof typeof themeTokens;
 
 export const vars = createGlobalTheme(':root', themeTokens);
 
-// Тёмная тема: те же токены — другие значения.
-// ThemeProvider вешает атрибут на обёртку: <div data-theme="dark">
+
+
 export const darkThemeTokens: Record<ThemeToken, string> = {
     ...themeTokens,
 
