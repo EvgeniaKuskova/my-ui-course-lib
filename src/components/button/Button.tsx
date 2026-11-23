@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { ButtonProps } from './ButtonProps.ts';
-import { base, variant, size } from './Button.css.ts';
+import { base, icon as iconClass, variant, size } from './Button.css.ts';
 
 export type { ButtonSize, ButtonVariant } from './ButtonProps.ts';
 
@@ -8,6 +8,7 @@ function Button(props: ButtonProps) {
   const {
     variant: btnVariant = 'fill',
     size: btnSize = 'M',
+    icon,
     className,
     children,
     as = 'button',
@@ -30,6 +31,11 @@ function Button(props: ButtonProps) {
           className={classes}
           {...rest}
       >
+        {icon ? (
+            <span className={iconClass} aria-hidden="true">
+          {icon}
+        </span>
+        ) : null}
         {children}
       </Tag>
   );

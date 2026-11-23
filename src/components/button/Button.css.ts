@@ -1,6 +1,13 @@
 ﻿import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from '../../styles/theme.css.ts';
 
+export const icon = style({
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+});
+
 export const base = style({
     boxSizing: 'border-box',
     textDecoration: 'none',
@@ -9,6 +16,7 @@ export const base = style({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: vars.buttonIconGap,
     borderRadius: vars.buttonBorderRadius,
     border: `${vars.buttonBorderWidth} ${vars.buttonBorderStyle} ${vars.buttonBorderColor}`,
     cursor: 'pointer',

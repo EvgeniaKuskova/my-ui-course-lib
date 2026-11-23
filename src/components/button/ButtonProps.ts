@@ -12,6 +12,7 @@ export type ButtonSize = 'S' | 'M' | 'L'
 type BaseButtonProps = {
   variant?: ButtonVariant
   size?: ButtonSize
+  icon?: ReactNode
   children?: ReactNode
 }
 

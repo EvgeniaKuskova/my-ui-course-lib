@@ -5,4 +5,17 @@ body {
     font-family: Inter, system-ui, sans-serif;
     line-height: 20px;
     letter-spacing: -0.1px;
+    background: #ffffff;
+    color: #17171b;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body:has([data-theme='dark']) {
+    background: #18181b;
+    color: #fafafa;
+}
+
+body:has([data-theme='dark']) .spec-table th,
+body:has([data-theme='dark']) .spec-table td {
+    border-color: #3f3f46;
 }
