@@ -61,7 +61,7 @@ export const navButton = style({
     },
 });
 
-// Шевроны зеркалятся в RTL, иконка календаря — нет
+
 export const chevron = style({
     display: 'flex',
     selectors: {
@@ -103,9 +103,9 @@ export const cell = style({
     justifyContent: 'center',
 });
 
-// Порядок объявления важен: weekend → disabled → day (внутри day — selected).
-// Равная специфичность решается порядком, поэтому выбранный день
-// перекрывает цвет выходного и disabled.
+
+
+
 export const weekend = style({
     color: vars.calendarWeekendColor,
 });
@@ -160,7 +160,7 @@ export const day = style({
     },
 });
 
-// Точка под сегодняшним числом: currentColor наследует цвет текста дня
+
 export const dot = style({
     width: vars.calendarDotSize,
     height: vars.calendarDotSize,
@@ -181,8 +181,8 @@ export const selectedDate = style({
     whiteSpace: 'nowrap',
 });
 
-// Кнопка «Сегодня» — ваш Button с иконкой, отступы 12 и 16.
-// Селектор с классом Button повышает специфичность и перекрывает размеры size.
+
+
 export const todayButton = style({
     selectors: {
         [`${buttonBase}&`]: {

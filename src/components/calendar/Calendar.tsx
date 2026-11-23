@@ -13,8 +13,7 @@ import { useLocale } from './locale.ts';
 import type { Locale } from './locale.ts';
 import type { CalendarProps } from './Calendar.types.ts';
 import * as s from './Calendar.css.ts';
-
-/* ——— работа с датами ——— */
+import { buildMonthWeeks } from './grid.ts';
 
 const startOfDay = (date: Date) =>
   new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -36,7 +35,7 @@ const isSameMonth = (a: Date, b: Date) =>
 const addDays = (date: Date, amount: number) =>
   new Date(date.getFullYear(), date.getMonth(), date.getDate() + amount);
 
-// 31 января → 28/29 февраля, 31 марта → 30 апреля
+
 const addMonths = (date: Date, amount: number) => {
   const target = new Date(date.getFullYear(), date.getMonth() + amount, 1);
   const day = Math.min(date.getDate(), daysInMonth(target));
@@ -51,7 +50,7 @@ const dayKey = (date: Date) =>
 const capitalize = (value: string, locale: string) =>
   value.charAt(0).toLocaleUpperCase(locale) + value.slice(1);
 
-// «Ноябрь 2026»: месяц и год через Intl, без «г.» и служебных частей
+
 const formatMonthTitle = (date: Date, locale: string) => {
   const parts = new Intl.DateTimeFormat(locale, {
     month: 'long',
@@ -66,7 +65,7 @@ const formatMonthTitle = (date: Date, locale: string) => {
   return capitalize(text, locale);
 };
 
-// русский Intl дописывает «г.» в конце — в макете даты без него
+
 const RU_YEAR_SUFFIX = /[\s\u00A0\u202F]+г\.\s*$/;
 
 const formatDate = (
@@ -85,7 +84,7 @@ const formatDate = (
   return text.replace(RU_YEAR_SUFFIX, '');
 };
 
-// 2 января 2000 — воскресенье: опорная неделя для названий дней
+
 const WEEKDAY_REFERENCE = new Date(2000, 0, 2);
 
 type WeekdayInfo = {
@@ -96,7 +95,7 @@ type WeekdayInfo = {
 
 const buildWeekdays = (locale: Locale): WeekdayInfo[] => {
   const { locale: localeCode, firstDayOfWeek, weekend } = locale;
-  // в арабском дни недели короткие — weekday: 'narrow'
+
   const weekdayStyle = localeCode.startsWith('ar') ? 'narrow' : 'short';
   const short = new Intl.DateTimeFormat(localeCode, { weekday: weekdayStyle });
   const long = new Intl.DateTimeFormat(localeCode, { weekday: 'long' });
@@ -133,7 +132,7 @@ export function Calendar(props: CalendarProps) {
   const min = minDate ? startOfDay(minDate) : null;
   const max = maxDate ? startOfDay(maxDate) : null;
 
-  // month — показанный месяц, value — выбранная дата: листание не трогает value
+
   const [internalMonth, setInternalMonth] = useState(() =>
     startOfMonth(value ?? new Date()),
   );
@@ -144,7 +143,7 @@ export function Calendar(props: CalendarProps) {
     return isSameMonth(base, month) ? base : startOfMonth(month);
   });
 
-  // если месяц сменили снаружи — фокус остаётся внутри видимого месяца
+
   const focusDate = isSameMonth(focusedDate, month)
     ? focusedDate
     : startOfMonth(month);
@@ -210,7 +209,7 @@ export function Calendar(props: CalendarProps) {
     let next: Date;
 
     switch (event.key) {
-      // в RTL стрелки ← → работают наоборот
+
       case 'ArrowLeft':
         next = addDays(focusDate, dir === 'rtl' ? 1 : -1);
         break;
@@ -245,25 +244,10 @@ export function Calendar(props: CalendarProps) {
 
   /* сетка: дни соседних месяцев не показываем */
 
-  const weeks = useMemo(() => {
-    const first = startOfMonth(month);
-    const leading = (first.getDay() - firstDayOfWeek + 7) % 7;
-    const count = daysInMonth(month);
-    const total = Math.ceil((leading + count) / 7) * 7;
-
-    const cells: (Date | null)[] = Array.from({ length: total }, (_, index) => {
-      const day = index - leading + 1;
-      return day >= 1 && day <= count
-        ? new Date(month.getFullYear(), month.getMonth(), day)
-        : null;
-    });
-
-    const rows: (Date | null)[][] = [];
-    for (let index = 0; index < cells.length; index += 7) {
-      rows.push(cells.slice(index, index + 7));
-    }
-    return rows;
-  }, [month, firstDayOfWeek]);
+  const weeks = useMemo(
+      () => buildMonthWeeks(month, firstDayOfWeek),
+      [month, firstDayOfWeek],
+  );
 
   const weekdays = useMemo(() => buildWeekdays(locale), [locale]);
 
@@ -272,7 +256,6 @@ export function Calendar(props: CalendarProps) {
     [localeCode],
   );
 
-  // в макете у en месяц сокращённый («Nov 17, 2026»), у ru и ar — длинный
   const monthStyle: 'long' | 'short' = localeCode.startsWith('en')
     ? 'short'
     : 'long';
